@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//Dtd HTML 4.01 Transitional//EN" "http://www.w3.org/tr/html4/loose.dtd">
+<html>
+	<head>
+		<title>Bee Health Propolis - Transaction Error</title>
+        <style>
+            *    { margin: 0; padding: 0; }
+    body { background: #ebebeb; font-family: Helvetica, Verdana, Tahoma, sans-serif; margin: 0; font-size: 0.9em; }
+    h2   { color: #523f6d; display: inline-block; vertical-align: middle;}
+    h3   { font-size: 1.2em; margin-bottom: 1em; }
+    h4   { margin-bottom: 1em;}
+
+    .tranerr      { background: #ffde00; border-radius: 5px; margin: 1em; padding: 1em; display:inline-block;}
+    
+    .container .header .logo { max-width: none; height: 80px; display: inline-block; vertical-align: middle; }
+    .container .row .logo { max-width: none; height: 100px; margin-bottom: 1em; }
+    .header           { background: #ffde00; border-radius: 5px; margin: 1em; padding: 2em; }
+    .container        { margin: auto; max-width: 1000px; }
+    .row              { background: #ffffff; border: 1px solid #c2c2c2; border-radius: 5px; margin: 1em; padding: 2em; text-align: center; }
+    
+        @media only screen and (max-width: 600px){
+      .header { text-align: center; }
+
+      h2 { text-align: center; }
+
+    }
+        </style>
+		</head>
+	<body>
+    <div class="container">
+        <div class="header">
+        <img class="logo" src="https://www.secure-server-hosting.com/secutran/secureforms/sh219571/propolis-logo.png" alt="Bee Health Propolis" />
+            <h2>Transaction Error</h2>
+        </div><!-- .header -->
+        <div class="row">
+            <img class="logo" src="https://www.secure-server-hosting.com/secutran/secureforms/sh219571/whoops.png" alt="Transaction Error" />
+            <h3>The transaction failed.</h3>
+            <form action="/secutran/secuitems.php" method="POST">$posted_fields
+                <h4>Please return to the <input type="submit" name="submit" value="previous page"> to amend the problems below.</h4>
+            </form>
+            <h4 class="tranerr" >$tranerrdesc</h4>
+            <h4>$tranerrdetail</h4>
+            <h5>If you received this message during a transaction, it will not have been processed. Details of the error have been logged by our system.</h5>
+        </div><!-- .row -->
+    </div><!-- .container -->
+	</body>
+</html>

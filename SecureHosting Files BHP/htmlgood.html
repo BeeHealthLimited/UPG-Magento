@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//Dtd HTML 4.01 Transitional//EN" "http://www.w3.org/tr/html4/loose.dtd">
+<html>
+	<head>
+		<title>Bee Health Propolis - Payment Confirmation</title>
+        <style>
+            *    { margin: 0; padding: 0; }
+    body { background: #ebebeb; font-family: Helvetica, Verdana, Tahoma, sans-serif; margin: 0; font-size: 0.9em; }
+    h2   { color: #523f6d; display: inline-block; vertical-align: middle;}
+    h3   { font-size: 1.2em; margin-bottom: 1em; }
+    h4   { margin-bottom: 1em;}
+    
+    .container .header .logo { max-width: none; height: 80px; display: inline-block; vertical-align: middle; }
+    .container .row .logo { max-width: none; height: 100px; margin-bottom: 1em; }
+
+    .header           { background: #ffde00; border-radius: 5px; margin: 1em; padding: 2em; }
+    .container        { margin: auto; max-width: 1000px; }
+    .row              { background: #ffffff; border: 1px solid #c2c2c2; border-radius: 5px; margin: 1em; padding: 2em; text-align: center; }
+
+    @media only screen and (max-width: 600px){
+      .header { text-align: center; }
+
+      h2 { text-align: center; }
+    }
+        </style>
+			<script src="https://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
+			<script type="text/javascript">
+            function redirect(){
+                var ReturnUrl = '$returnurl';
+                var Href = ReturnUrl+'?orderid=$orderid&ordstatus=$ordstatus&transactionamount=$transactiontotal&transactionnumber=$trannum&verify='+CryptoJS.SHA1('$trannum$transactiontotal');
+				location.href = Href;
+            }
+            setTimeout(redirect,5000);
+			</script>
+		</head>
+	<body>
+    <div class="container">
+        <div class="header">
+        <img class="logo" src="https://www.secure-server-hosting.com/secutran/secureforms/sh219571/propolis-logo.png" alt="Bee Health Propolis" />
+            <h2>Payment Confirmation</h2>
+        </div><!-- .header -->
+        <div class="row">
+            <img class="logo" src="https://www.secure-server-hosting.com/secutran/secureforms/sh219571/check-mark-yellow-hi.png" alt="Your payment has been successful" />
+            <h3>Your payment has been successful</h3>
+            <h4>You are about to be redirected back to Bee Health Propolis - please wait ...</h4>
+            <h4><a href="#" onclick="redirect(); return false;">Please click here if you are not redirected within a few seconds</a></h4>
+        </div><!-- .row -->
+    </div><!-- .container -->
+	</body>
+</html>
