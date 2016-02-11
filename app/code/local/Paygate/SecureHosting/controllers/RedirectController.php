@@ -36,7 +36,7 @@ protected $_order;
         }
 
         $order->addStatusToHistory(
-            $order->getStatus(),
+            Mage_Sales_Model_Order::STATE_PENDING_PAYMENT,
             Mage::helper('securehosting')->__('Customer was redirected to Secure Hosting and Payments')
         );
         $order->save();
@@ -50,7 +50,7 @@ protected $_order;
         $session->unsQuoteId();
 	}
 	
-	public function  successAction()
+	public function successAction()
     {
         $session = Mage::getSingleton('checkout/session');
         $session->setQuoteId($session->getSecureHostingStandardQuoteId());
@@ -136,13 +136,17 @@ protected $_order;
 						->addObject($invoice)
 						->addObject($invoice->getOrder())
 						->save();
-					$invoice->sendEmail(true,'');
-					$newStatus = Mage_Sales_Model_Order::STATE_COMPLETE;
+					//$invoice->sendEmail(true,'');
+					$newStatus = Mage_Sales_Model_Order::STATE_PROCESSING;
 					$message = Mage::helper('securehosting')->__("Transaction complete, transaction reference: \"$_GET[transactionnumber]\"<br />Order Invoiced");
 				} else {
 					$newStatus = Mage_Sales_Model_Order::STATE_PROCESSING;
 					$message = Mage::helper('securehosting')->__("Transaction complete, transaction reference: \"$_GET[transactionnumber]\"");
 				}
+                if (!$order->getEmailSent()){
+                    $order->sendNewOrderEmail();
+                    $order->setIsCustomerNotified(true);
+                }
 				$order->addStatusToHistory($newStatus,$message);
 				$order->save();
 			}
