@@ -136,17 +136,15 @@ protected $_order;
 						->addObject($invoice)
 						->addObject($invoice->getOrder())
 						->save();
-					//$invoice->sendEmail(true,'');
+					$invoice->sendEmail(true,'');
 					$newStatus = Mage_Sales_Model_Order::STATE_PROCESSING;
 					$message = Mage::helper('securehosting')->__("Transaction complete, transaction reference: \"$_GET[transactionnumber]\"<br />Order Invoiced");
 				} else {
 					$newStatus = Mage_Sales_Model_Order::STATE_PROCESSING;
 					$message = Mage::helper('securehosting')->__("Transaction complete, transaction reference: \"$_GET[transactionnumber]\"");
-				}
-                if (!$order->getEmailSent()){
                     $order->sendNewOrderEmail();
                     $order->setIsCustomerNotified(true);
-                }
+				}
 				$order->addStatusToHistory($newStatus,$message);
 				$order->save();
 			}
