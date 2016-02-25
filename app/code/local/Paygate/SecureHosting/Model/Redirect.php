@@ -151,8 +151,8 @@ class Paygate_SecureHosting_Model_Redirect extends Mage_Payment_Model_Method_Abs
                         );
 		
 		if($this->getConfig()->ASActive()){
-			if(preg_match('/value=\"([a-zA-Z0-9]{32})\"/', $this->GetAdvancedSecuitems($secuitems, $TransactionAmount), $Matches))
-				$fields['secuString'] = $Matches[1];
+			if(preg_match('/([a-zA-Z0-9]{32})/', $this->GetAdvancedSecuitems($secuitems, $TransactionAmount), $Matches))
+				$fields['secustring'] = $Matches[1];
 		}
         
 
